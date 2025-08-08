@@ -6,6 +6,14 @@
     "bin": {
         "vizz-init": "./index.js"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Visalan-H/vizz-init.git"
+    },
+    "homepage": "https://github.com/Visalan-H/vizz-init#readme",
+    "bugs": {
+        "url": "https://github.com/Visalan-H/vizz-init/issues"
+    },
     "author": "Visalan H",
     "license": "MIT"
 }
