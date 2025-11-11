@@ -1,6 +1,6 @@
 {
     "name": "vizz-init",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Start an express server with boilerplate code",
     "main": "index.js",
     "bin": {
