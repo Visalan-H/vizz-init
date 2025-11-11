@@ -13,8 +13,24 @@ if (!fs.existsSync(targetDir)) {
 execSync('npm init -y', { cwd: targetDir, stdio: 'inherit' });
 
 execSync('npm install express dotenv cors', { cwd: targetDir, stdio: 'inherit' });
-execSync('npm i -D typescript @types/node @types/express ts-node prettier', { cwd: targetDir, stdio: 'inherit' });
+execSync('npm i -D typescript @types/node @types/express ts-node prettier nodemon', { cwd: targetDir, stdio: 'inherit' });
 
+
+const prettierRc = 
+`{
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "useTabs": false,
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "arrowParens": "always",
+    "endOfLine": "auto",
+    "bracketSpacing": true,
+    "jsxSingleQuote": false,
+    "bracketSameLine": false
+}
+`
 const tsConfig = `
 {
     "compilerOptions": {
@@ -69,6 +85,7 @@ fs.writeFileSync(path.join(targetDir,'src' ,'server.ts'), serverTs.trim());
 fs.writeFileSync(path.join(targetDir, '.env'),env.trim());
 fs.writeFileSync(path.join(targetDir, '.gitignore'),gitignore.trim());
 fs.writeFileSync(path.join(targetDir, 'tsconfig.json'),tsConfig.trim());
+fs.writeFileSync(path.join(targetDir, '.prettierrc'),prettierRc.trim());
 
 fs.mkdirSync(path.join(targetDir,'src', 'models'));
 fs.mkdirSync(path.join(targetDir,'src', 'controllers'));
