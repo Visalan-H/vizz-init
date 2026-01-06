@@ -13,7 +13,7 @@ if (!fs.existsSync(targetDir)) {
 execSync('npm init -y', { cwd: targetDir, stdio: 'inherit' });
 
 execSync('npm install express dotenv cors', { cwd: targetDir, stdio: 'inherit' });
-execSync('npm i -D typescript @types/node @types/express ts-node prettier nodemon', { cwd: targetDir, stdio: 'inherit' });
+execSync('npm i -D typescript @types/cors @types/node @types/express ts-node prettier nodemon', { cwd: targetDir, stdio: 'inherit' });
 
 
 const prettierRc = 
@@ -50,9 +50,12 @@ const tsConfig = `
 const serverTs = `
 import express, { Request, Response } from "express";
 import 'dotenv/config';
-const app = express();
-
+import cors from 'cors'
 const PORT = process.env.PORT;
+
+const app = express();
+app.use(cors())
+app.use(express.json())
 
 app.get("/", (request: Request, response: Response) => {
     response.status(200).send("Hello World");
